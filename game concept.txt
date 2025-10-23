@@ -1,0 +1,26 @@
+Temple Run-style game with reference to the criteria as stated in the lecture 2 slides.
+
+The player can go left, right, and jump. They are constantly running forward; however, it may be more efficient to have the player still and move the environment around them, given that we are spawning potentially infinite areas for them to run through. Either way, this completes criterion 1.
+
+We can give the player an avatar, either an asset or a very basic model made by us. We need to set up animations for at least a running state, a jump, and a death. Potentially, various death animations will be needed for different sorts of deaths (more on that later). The camera will be positioned above the avatar from behind, and may shift slightly to the sides as the player moves. We could also add extra effects, such as shaking, when the player gets hit/dies. This completes the second criterion.
+
+For the third, the player will be confined to 3 lanes. They may move to any lane at a time linearly, but may not exit this playable area.
+
+For the fourth, we need five different types of objects that the player can collide with, each requiring its own animation and separate models. Some of these could be animated obstacles, such as a spinning blade trap or a spike trap. We could also feature collectable items, such as coins and gems, with a hovering animation that allows us to pick them up.
+
+The fifth one is harder to do, for this, we need something separate from the player that moves in the z-axis and x-axis. It could be easy to add an obstacle that bounces from one side to the other, but that would only cover one axis. Something that chases the player (like the guard in Subway Surfers) wouldn't actually work for this, as its movement would be dependent on the player. If this criterion really isn't flexible (like the moving obstacle isn't legible), we could add something that the player has to chase. Perhaps some rare animal that also runs through the course, catching either gives a bunch of coins or a power-up.
+
+For the sixth, we just need a life system. We could do it so that certain obstacles instant kill and others deal damage. Maybe a floor spike trap damages, but running into a spikey wall instant kills. Technically, I don't think we need a health system exactly, just the ability to die counts.
+
+For seven, we need a scoring system, this could be the already mentioned coin/gem system, picking them up as you play. More coins = higher score. 
+
+For eight, we need a ground plane with unevenness. This should be fairly simple, we can include gaps you need to jump over, or other things in the way that need to be jumped over and can't be walked around.
+
+For nine, we need objects with applied textures; this is very simple.
+
+For ten, we need a basic ui, this can just be a start menu, perhaps just saying "Press any key to start", then a score system as we play, and when you die, it can say "you died" and also display your final score. 
+
+I'll focus on environments, obstacles, and collectables. I'll discuss my plan for the design process of that and other details that need to be covered.
+For the environment, I will make several fairly small prefab modules that will be randomly selected to generate next. For example, one prefab could include just a few obstacles, like spinning blade traps, that force the player to move to the side. Another prefab could contain a large gap in the floor that the player must jump over. I will also be using assets to detail these areas. The plan is for one of these to randomly generate where the player can't see due to the camera's height and angle. And once it's no longer in view, it should be deleted. 
+
+There are other aspects that need doing, we need the avatar, avatar animations, player movement, player collision with the obstacles (I can set up triggers and collision and some animations for the obstacles but the rest can be handled by someone else), we also need a UI, a start and end sequence (maybe after a death, it goes back to saying press any button to start?), we might also want to add a high score system that remembers even after closing the game. We could also benefit from having sound done, sound effects when you get hit, pick up coins, die. Also ambient sounds like birds, wind, etc, depending on the environment. Also, potentially looping music.
